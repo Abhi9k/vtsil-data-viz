@@ -1,0 +1,16 @@
+body {
+    font: 10px sans-serif;
+}
+
+h2 {
+    margin-top: 0;
+    color: grey;
+}
+
+svg {
+    background-color: steelblue;
+}
+
+.content {
+    fill: lightsteelblue;
+}
