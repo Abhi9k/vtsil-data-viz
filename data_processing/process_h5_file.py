@@ -61,7 +61,7 @@ def h5Data(fname,root_group_name,daq_key,sampling_freq):
         for y in range(M):
             value=data[x][y]
             timestamp = generateTimestamp(start_time,second)
-            if tick==sampling_freq-1:
+            if tick==sampling_freq:
                 second+=1
                 tick=0
             else:
@@ -106,9 +106,9 @@ if __name__ == '__main__':
     metadata = parseAccelSheet(accel_sheet_name)
     h5ToCSV(fname, root_group_name, metadata, daq_key,sampling_freq)
 
-import process_h5_file as p
-fname='../h5data/2017-12-02_12_53_17.h5'
-root_group_name='Data'
-daq_keys=p.daqKeysInFile(fname,root_group_name)
-for key in daq_keys:
-    p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
+# import process_h5_file as p
+# fname='../h5data/2017-12-02_12_53_17.h5'
+# root_group_name='Data'
+# daq_keys=p.daqKeysInFile(fname,root_group_name)
+# for key in daq_keys:
+#     p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
