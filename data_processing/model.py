@@ -61,4 +61,4 @@ def insert_sensor_data(rows):
 	resp=insert_rows_sensor_data(cursor,rows)
 	cursor.close()
 	db.commit()
-	return res
+	return resp
