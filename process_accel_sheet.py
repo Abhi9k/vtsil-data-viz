@@ -36,18 +36,16 @@ column_name_mappings = {
 
 key_column = 7
 
-
 def getColumnValue(parts, position):
     processor = (column_name_mappings[position]['processor']
                  if 'processor' in column_name_mappings[position] else default_processor)
     return processor(parts[position])
 
-
 def parseAccelSheet(fname, has_header=True):
     response = {}
     with open(fname) as f:
         lines = f.readlines()
-        lines = list(map(lambda x: x.strip('\r\n'), lines))
+        lines = list(map(lambda x: x.strip('\r\n\"'), lines))
         start = (1 if has_header else 0)
         for line in lines[start:]:
             parts = line.split(',')
