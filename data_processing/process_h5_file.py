@@ -63,7 +63,7 @@ def h5Data(fname,root_group_name,daq_key,sampling_freq):
             timestamp = generateTimestamp(start_time,second)
             if tick==sampling_freq:
                 second+=1
-                tick=0
+                tick=1
             else:
                 tick+=1
 
