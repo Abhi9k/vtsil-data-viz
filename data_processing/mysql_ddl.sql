@@ -21,6 +21,21 @@ PRIMARY KEY (id),
 FOREIGN KEY (daq_id) REFERENCES sensor_metadata(id)
 );
 
+CREATE TABLE IF NOT EXISTS psd (
+	id SERIAL,
+	daq_id BIGINT UNSIGNED NOT NULL,
+	timestamp DATETIME,
+	average_power FLOAT(20),
+	freqs TEXT,
+	power_spectrum TEXT,
+PRIMARY KEY(id),
+FOREIGN KEY (daq_id) REFERENCES sensor_metadata(id)
+);
+
+
+ALTER TABLE sensor_data ADD INDEX idx_sensor_timestamp timestamp;
+
+ALTER TABLE psd ADD INDEX idx_psd_timestamp timestamp;
 -- """INSERT INTO sensor_metadata (daq,bias_level,floor_number,orientation,sensitivity,serial,x,y,z)
 -- 	VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
 -- 	[

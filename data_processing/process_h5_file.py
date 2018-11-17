@@ -4,27 +4,10 @@ import numpy as np
 from datetime import datetime, timedelta
 from process_accel_sheet import parseAccelSheet
 from model import get_daq_id_by_daq,insert_sensor_data
-
-
-def parseDate(d):
-    format = '%Y-%m-%d_%H_%M_%S'
-    return datetime.strptime(d, format)
-
-def formatDate(d):
-    format = '%Y-%m-%d %H:%M:%S'
-    return datetime.strftime(d, format)
+from utils import (parseDate, formatDate, generateTimestamp)
 
 def parseStartDateTime(h5name):
     return parseDate(h5name.split('/')[-1].split('.')[0])
-
-def generateTimestamp(start_time, second):
-    days=(second/(60*60))/24
-    hours=(second-days*60*60*24)/(60*60)
-    minutes=(second-days*60*60*24-hours*60*60)/60
-    seconds=(second-days*60*60*24-hours*60*60-minutes*60)
-    timestamp = formatDate(start_time + timedelta(days=days,seconds=seconds,minutes=minutes,hours=hours))
-
-    return timestamp
 
 def h5DataKeys(fname,root_group_name):
     f = h5py.File(fname, 'r')
@@ -107,7 +90,7 @@ if __name__ == '__main__':
     h5ToCSV(fname, root_group_name, metadata, daq_key,sampling_freq)
 
 # import process_h5_file as p
-# fname='../h5data/2017-12-02_12_53_17.h5'
+# fname='../../h5data/2017-12-02_12_53_17.h5'
 # root_group_name='Data'
 # daq_keys=p.daqKeysInFile(fname,root_group_name)
 # for key in daq_keys:
