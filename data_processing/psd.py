@@ -2,7 +2,7 @@ from scipy import signal
 from scipy import integrate
 from datetime import timedelta
 from model import (get_sensor_data_in_time_range,insert_psd)
-from from utils import (SENSOR_DATE_TIME_FORMAT,parseDate,formatDate,generateTimestamp)
+from utils import (SENSOR_DATE_TIME_FORMAT,parseDate,formatDate,generateTimestamp)
 
 REFRESH_INTERVAL_SEC = 5
 BATCH_FETCH_TIME_MIN = 1

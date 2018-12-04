@@ -76,6 +76,7 @@ def h5ToDatabaseForDaq(fname,root_group_name,daq_key,sampling_freq=256):
     if not daq_id:
         return None
     rows=[]
+    print "processing daq: {}".format(daq_key)
     for timestamp,value in data:
         rows.append((daq_id,timestamp,value))
     insert_sensor_data(rows)
@@ -89,8 +90,107 @@ if __name__ == '__main__':
     metadata = parseAccelSheet(accel_sheet_name)
     h5ToCSV(fname, root_group_name, metadata, daq_key,sampling_freq)
 
+
+# fname='../h5data/2017-12-02_12_53_17.h5'
 # import process_h5_file as p
-# fname='../../h5data/2017-12-02_12_53_17.h5'
+# from joblib import Parallel, delayed
+# import multiprocessing
+# num_cores = multiprocessing.cpu_count()
+# def process(key):
+#     p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
+# root_group_name='Data'
+# daq_keys=p.daqKeysInFile(fname,root_group_name)
+# Parallel(n_jobs=num_cores)(delayed(process)(key) for key in daq_keys)
+
+
+# import process_h5_file as p
+# fname='../../h5data/2017-12-02_16_53_17.h5'
+# root_group_name='Data'
+# daq_keys=p.daqKeysInFile(fname,root_group_name)
+# for key in daq_keys:
+#     p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
+
+
+# import process_h5_file as p
+# fname='../../h5data/2017-12-02_18_53_17.h5'
+# root_group_name='Data'
+# daq_keys=p.daqKeysInFile(fname,root_group_name)
+# for key in daq_keys:
+#     p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
+
+# import process_h5_file as p
+# fname='../../h5data/2017-12-02_20_53_17.h5'
+# root_group_name='Data'
+# daq_keys=p.daqKeysInFile(fname,root_group_name)
+# for key in daq_keys:
+#     p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
+
+# import process_h5_file as p
+# fname='../../h5data/2017-12-02_22_53_17.h5'
+# root_group_name='Data'
+# daq_keys=p.daqKeysInFile(fname,root_group_name)
+# for key in daq_keys:
+#     p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
+
+
+
+
+# import process_h5_file as p
+# fname='../../h5data/2017-12-02_15_53_17.h5'
+# root_group_name='Data'
+# daq_keys=p.daqKeysInFile(fname,root_group_name)
+# for key in daq_keys:
+#     p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
+
+
+# import process_h5_file as p
+# fname='../../h5data/2017-12-02_17_53_17.h5'
+# root_group_name='Data'
+# daq_keys=p.daqKeysInFile(fname,root_group_name)
+# for key in daq_keys:
+#     p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
+
+
+
+
+
+
+
+
+# import process_h5_file as p
+# fname='../../h5data/2017-12-02_19_53_17.h5'
+# root_group_name='Data'
+# daq_keys=p.daqKeysInFile(fname,root_group_name)
+# for key in daq_keys:
+#     p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
+
+# import process_h5_file as p
+# fname='../../h5data/2017-12-02_21_53_17.h5'
+# root_group_name='Data'
+# daq_keys=p.daqKeysInFile(fname,root_group_name)
+# for key in daq_keys:
+#     p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
+
+# import process_h5_file as p
+# fname='../../h5data/2017-12-02_23_53_17.h5'
+# root_group_name='Data'
+# daq_keys=p.daqKeysInFile(fname,root_group_name)
+# for key in daq_keys:
+#     p.h5ToDatabaseForDaq(fname,root_group_name,key,256)
+
+
+# freqs=data['freqs']
+# series=[]
+# for k in data['data'].keys():
+#     datum['data']=[]
+#     v=data['data'][k]['power_spectrum'][0]
+#     for i in range(len(v)):
+#         datum['data'].append({'x':freqs[i],'y':v[i],'id':k})
+#     series.append(datum)
+
+##############
+# import process_h5_file as p
+# fname='../../h5data/2017-12-02_13_53_17.h5'
 # root_group_name='Data'
 # daq_keys=p.daqKeysInFile(fname,root_group_name)
 # for key in daq_keys:
